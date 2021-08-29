@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width" scale="1.0"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap3.css">
+	<link rel="stylesheet" type="text/css" href="css/css/all.css">
+	<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<style>
+body
+{
+background-color:#e056fd;
+}
+.formdemo
+{
+min-height:500px;
+background-color:#22a6b3;
+border:1px solid black;
+box-shadow:5px 5px 5px rgba(0,0,0,0.5);
+padding:20px; 
+}
+.demo
+{
+margin-top:30px;
+}
+.demotext
+{
+margin:10px 30px;
+}
+.demotext label
+{
+font-size:20px;
+}
+textarea
+{
+resize:none;
+}
+.checkbox
+{
+margin:0 20px;
+}
+</style>
+</head> 
+<body>
+<div class="container">
+<div class="row">
+<h1 class="text-center">Registration Form</h1>
+</div>
+<div class="row demo">
+<div class="col-md-2"></div>
+<div class="col-md-8">
+<div class="formdemo">
+<form>
+<div class="row">
+<div class="col-md-6">
+<div class="form-group demotext">
+<label>First Name</label>
+<input type="text" name="FName" id="fname" class="form-control"/>
+</div>
+ </div>
+<div class="col-md-6">
+<div class="form-group demotext">
+<label>Last Name</label>
+<input type="text" name="LName" id="lname" class="form-control"/>
+</div>
+ </div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="form-group demotext">
+<label>Mobile Number</label>
+<input type="number" name="Mbo" id="mob" class="form-control"/>
+</div>
+ </div>
+<div class="col-md-6">
+<div class="form-group demotext">
+<label>Email</label>
+<input type="email" name="email" id="email" class="form-control"/>
+</div>
+ </div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="form-group demotext">
+<label>Permanent Address</label>
+<textarea rows="5" id="padd" class="form-control"></textarea>
+</div>
+ </div>
+<div class="col-md-6">
+<div class="form-group demotext">
+<label>Alternet Address </label>
+<textarea rows="5" id="Aadd" class="form-control"></textarea>
+</div>
+ </div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="form-group demotext">
+<div><label>Gender</label></div>
+<label class="radio-inline">
+
+<input type="radio" class="gender" value="Male" name="Gender"/> Male
+
+</label>
+<label class="radio-inline">
+
+<input type="radio" class="gender" value="Female" name="Gender"/> Female
+
+</label>
+
+</div>
+ </div>
+<div class="col-md-6">
+<div class="form-group demotext">
+<div><label>Qualification</label></div>
+<label class="checkbox">
+<input type="checkbox" name="high" value="High" class="quali"/> High School</label>
+<label class="checkbox"><input type="checkbox" name="Intermidiate" value="Intermidiate" class="quali"/> Intermidiate</label>
+<label class="checkbox"><input type="checkbox" name="Graduation" value="Graduation" class="quali"/> Graduation</label>
+</div>
+ </div>
+</div>
+<div class="row">
+<div class="col-md-6"></div>
+<div class="col-md-6">
+<div class="form-group demotext">
+<input type="reset" name="reset" id="btnreset" class="btn btn-warning btn-lg" value="Cancle"/> &nbsp;&nbsp;&nbsp;
+<input type="button" name="Save" id="btnSave" class="btn btn-info btn-lg" value="Save"/> 
+</div>
+</div>
+</div>
+</form>
+<div class="row">
+<div class="col-md-12">
+<table id="tbl" class="table table-bordered bg-primary">
+<thead>
+<tr><th>FName</th><th>LName</th><th>Gender</th><th>PermanentAdd</th><th>Alternet Add</th><th>Qualification</th><th>Mobile</th><th>Email</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-2"></div>
+</div>
+</div>
+<script>
+$(document).ready(function(){
+var Persons=[];
+
+$('#btnSave').click(function(){
+var i=0;
+var Person={};
+Person.fname=$('#fname').val();
+Person.lname=$('#lname').val();
+Person.Mob=$('#mob').val();
+Person.email=$('#email').val();
+Person.Aadd=$('#Aadd').val();
+Person.Padd=$('#padd').val();
+Person.gender=$('input[name="Gender"]:checked').val();
+Person.qualification=[];
+$('input[class="quali"]:checked').each(function(){
+
+Person.qualification[i]=$(this).val();
+i++;
+})
+Persons.push(Person);
+alert(i);
+$('#tbl tbody').append(function()
+{
+return "<tr><td>"+Person.fname+"</td><td>"+Person.lname+"</td><td>"+Person.gender+"</td><td>"+Person.Padd+"</td><td>"+Person.Aadd+"</td><td>"+Person.qualification+"</td><td>"+Person.Mob+"</td><td>"+Person.email+"</td></tr>";
+});
+});
+
+
+})
+</script>
+
+
+</script>
+</body>
+</html>
